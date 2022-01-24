@@ -5,10 +5,7 @@
 # 1.По двум заданным числам проверять является ли первое квадратом второго
 
 # def IsSquare(a, b):
-#     if a == b * b:
-#         return True
-#     else:
-#         return False
+#     return a == b * b
 
 # print(IsSquare(4, 2))
 # print(IsSquare(4, 3))
