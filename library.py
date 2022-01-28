@@ -12,3 +12,15 @@ def make_float_array(length, array_range = (0, 100)):
     for i in range(length):
         array += [random.randint(array_range[0], array_range[1]) + random.random()]
     return array
+
+def digit_input():
+    list = []
+    while True:
+        console_str = input('Введите число. Если хотите закончить ввод, то нажмите q: ')
+        if console_str == 'q':
+            break  
+        try:                                         
+            list += [int(console_str)]
+        except ValueError:                     
+            print('"' + console_str + '"' + ' - не является числом')
+    return list

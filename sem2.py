@@ -2,6 +2,7 @@
 # https://github.com/iksergey/HelloCode/blob/main/ex.md
 import random
 import library as lib
+from functools import reduce
 
 
 # # 18.Проверить истинность утверждения ¬(X ⋁ Y) = ¬X ⋀ ¬Y
@@ -124,6 +125,9 @@ import library as lib
 # 25. Найти сумму чисел от 1 до А
 # A = random.randint(1, 10)
 # print(A)
+
+# print(reduce(lambda x, y: x + y,range(1, A + 1)))
+
 # print(sum(i for i in range(1, A + 1)))
 
 # 27. Определить количество цифр в числе
@@ -205,10 +209,31 @@ import library as lib
 # print(lst)
 # print(max(lst) - min(lst))
 
+
 # ## Почувствуй себя лидом*
 # 41. Выяснить являются ли три числа сторонами треугольника
+# lst = lib.make_array(3, (0, 100))
+# print(lst)
+
+# for i in lst:
+#     temp_list = lst[:]
+#     temp_list.remove(i)
+#     if i > sum(temp_list):
+#         print('не является')
+#         break
+# else:
+#     print('является')
+
 # 42. Определить сколько чисел больше 0 введено с клавиатуры
+# list = lib.digit_input()
+# result = 0
+# print(list)
+# for i in list:
+#     result += i if i > 0 else 0
+# print(result)
+
 # 43. Написать программу преобразования десятичного числа в двоичное
+
 # 44. Найти точку пересечения двух прямых заданных уравнением y = k1 * x + b1, y = k2 * x + b2, b1 k1 и b2 и k2 заданы
 # 45. Показать числа Фибоначчи
 # 46. Написать программу масштабирования фигуры
