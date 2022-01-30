@@ -137,3 +137,58 @@ import os
 # lst = ['wejkrjkwerh dgff', 'wersdfgkjdj23365', 'sdf4fjdgfgg', 'fdgdgdfg3']
 # number = 4
 # print('да') if sum([str(number) in item for item in lst]) else print('нет')
+
+# 41.Определить, позицию второго вхождения строки в списке либо сообщить, что его нет.
+# lst = ['sdf', 'serwerjhsd', 'sd234345', 'sdfsd', 'sdfsdf']
+# sub_str = 'sdf'
+# in_list = 0
+# for i , item in enumerate(lst):
+#     pos = item.find(sub_str)
+#     if pos != -1:
+#         in_list += 1
+#     if in_list == 2:
+#         print(i)
+
+# # 42.Найти сумму чисел списка стоящих на нечетной позиции
+# lst = [435, 5, 6, 5, 6, 32, 5, -5]
+# print( sum([item if i % 2 else 0 for i, item in enumerate(lst)]) )
+
+# 43.Найти произведение пар чисел в списке. Парой считаем первый и последний элемент, второй и предпоследний и т.д. 
+# Пример: [2, 3, 4, 5, 6] => [12, 15, 16]; [2, 3, 5, 6] => [12, 15] 
+# lst = [4, 5, 3, 7, 3, 9, 5]
+# list_len = len(lst)
+# print([lst[i] * lst[list_len - i - 1] for i in range(0, list_len // 2 + 1)])
+
+# 44.В заданном списке вещественных чисел найдите разницу между максимальным и минимальным значением дробной части элементов. 
+# Пример: [1.1, 1.2, 3.1, 5, 10.01] => 0.19
+# lst = [1.1, 1.2, 3.1, 5.1, 10.01]
+# float_lst = [item % 1 for item in lst]
+# print(f'{max(float_lst) - min(float_lst) : .2f}')
+
+# 45.Написать программу преобразования десятичного числа в двоичное
+# number = 2
+# str_number = ''
+# while True:
+#     if number < 2:
+#         str_number += '1'        
+#         break
+#     str_number += str(number % 2)
+#     number = number // 2
+# str_number = str_number[::-1]
+# print(str_number)
+
+# 46.Дано число. Составить список чисел Фибоначчи, в том числе для отрицательных индексов
+
+# 47.Строка содержит набор чисел. Показать большее и меньшее число
+# string = '234738746152349'
+# print(max([int(item) for item in string]))
+# print(min([int(item) for item in string]))
+
+# 48.Найти корни квадратного уравнения Ax² + Bx + C = 0
+# Математикой
+# Используя дополнительные библиотеки*
+# 49.Найти НОК двух чисел
+# 50.Вычислить число  c заданной точностью d
+#     Пример: при d = 0.001, π = 3.141. 10-1≤d≤10-10
+
+# 51.Составить список простых множителей натурального числа N
