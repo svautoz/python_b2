@@ -76,7 +76,6 @@ from functools import reduce
 
 
 # 32.Задать массив из 8 элементов, заполненных нулями и единицами вывести их на экран
-# import random
 # list  = []
 # for i in range(8):
 #     list.append(random.randint(0, 1))
