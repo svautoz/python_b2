@@ -4,6 +4,7 @@ import random
 import datetime
 from time import sleep
 import os
+import math
 
 # 31.Для натурального N создать множество: 1, -3, 9, -27, 81 и т.д.
 # N = 5
@@ -127,9 +128,9 @@ import os
     
 
 # min = 1
-# # max = 25
-# # for i in range(15):
-# #     print(random_mid_sq(min, max))
+# max = 250
+# for i in range(15):
+#     print(random_mid_sq(min, max))
 
 
 
@@ -162,7 +163,8 @@ import os
 # 44.В заданном списке вещественных чисел найдите разницу между максимальным и минимальным значением дробной части элементов. 
 # Пример: [1.1, 1.2, 3.1, 5, 10.01] => 0.19
 # lst = [1.1, 1.2, 3.1, 5.1, 10.01]
-# float_lst = [item % 1 for item in lst]
+# float_lst = [round(item % 1, 2) for item in lst]
+# print(float_lst)
 # print(f'{max(float_lst) - min(float_lst) : .2f}')
 
 # 45.Написать программу преобразования десятичного числа в двоичное
@@ -178,6 +180,24 @@ import os
 # print(str_number)
 
 # 46.Дано число. Составить список чисел Фибоначчи, в том числе для отрицательных индексов
+# 1 1 2 3 5 8 13
+def feb(N):
+    if N < 2: return 1
+    return feb(N-1) + feb(N-2)
+
+    
+N = 10
+def feb_print(N):
+    list_1 = [0]
+    feb1 = 1
+    feb2 = 0
+    for i in range(N):
+        feb1, feb2 = feb2, feb1+feb2
+        list_1.append(feb2)
+        list_1.insert(0,((-1) **(i) * feb2))    
+    print(list_1)
+
+feb_print(N)
 
 # 47.Строка содержит набор чисел. Показать большее и меньшее число
 # string = '234738746152349'
