@@ -1,4 +1,5 @@
 from functools import reduce
+from lib2to3.pytree import convert
 import os
 import random
 import datetime
@@ -181,23 +182,23 @@ import math
 
 # 46.Дано число. Составить список чисел Фибоначчи, в том числе для отрицательных индексов
 # 1 1 2 3 5 8 13
-def feb(N):
-    if N < 2: return 1
-    return feb(N-1) + feb(N-2)
+# def feb(N):
+#     if N < 2: return 1
+#     return feb(N-1) + feb(N-2)
 
-    
-N = 10
-def feb_print(N):
-    list_1 = [0]
-    feb1 = 1
-    feb2 = 0
-    for i in range(N):
-        feb1, feb2 = feb2, feb1+feb2
-        list_1.append(feb2)
-        list_1.insert(0,((-1) **(i) * feb2))    
-    print(list_1)
 
-feb_print(N)
+# N = 10
+# def feb_print(N):
+#     list_1 = [0]
+#     feb1 = 1
+#     feb2 = 0
+#     for i in range(N):
+#         feb1, feb2 = feb2, feb1+feb2
+#         list_1.append(feb2)
+#         list_1.insert(0,((-1) **(i) * feb2))    
+#     print(list_1)
+
+# feb_print(N)
 
 # 47.Строка содержит набор чисел. Показать большее и меньшее число
 # string = '234738746152349'
@@ -207,8 +208,66 @@ feb_print(N)
 # 48.Найти корни квадратного уравнения Ax² + Bx + C = 0
 # Математикой
 # Используя дополнительные библиотеки*
+# def something():
+#     A = 2
+#     B = -5
+#     C = 2
+#     D = math.pow(B,2) - 4*A*C
+#     if D < 0: return print('Нет корней')
+#     if D == 0: return print((-B) / (2*A))     
+#     x1 = (-B + math.sqrt(D)) / (2*A)
+#     x2 = (-B - math.sqrt(D)) / (2*A)
+#     print(x1, x2)
+
+# something()
+
+
+
 # 49.Найти НОК двух чисел
+# def find_nok(A, B):
+#     if A < B:
+#         A, B = B, A
+#     NOK = A
+#     while True:
+#         if not NOK % B:
+#             return NOK            
+#         else:
+#             NOK += A 
+# print(find_nok(45, 72))
+
 # 50.Вычислить число  c заданной точностью d
 #     Пример: при d = 0.001, π = 3.141. 10-1≤d≤10-10
+# # d = '0.0000000000000000000000001'
+# # print(d)
+# # d = int(len(d) - 2)
+# # pi = round(math.pi, d)
+# print(f'{math.pi : .48f}')
 
 # 51.Составить список простых множителей натурального числа N
+# ограничение по перебору простых множителей sqrt(N)
+# начинаем с наименьших простых множителей и до sqrt(N)
+# def get_simple_list(N):
+#     simple_list = []
+#     lst = [number for number in range(2, int(N) + 1)]
+#     for number in lst:
+#         for i in range(2, number):
+#             if not number % i:
+#                 break
+#         else:
+#             simple_list.append(number)
+#     return simple_list
+
+# def get_simple_mult_list(simple_list, N):
+#     mult_list = []
+#     for sim_num in simple_list:
+#         while not N % sim_num:
+#             N /= sim_num
+#             mult_list.append(sim_num)
+#     if N > simple_list[-1]: mult_list.append(int(N))
+#     return mult_list
+
+# N = 3050
+# simple_list = get_simple_list(N**0.5)
+# print(N)
+# print(simple_list)
+# print(get_simple_mult_list(simple_list, N))
