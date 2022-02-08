@@ -260,41 +260,75 @@ from unittest import result
 #         print_table(table_list)
 #         break
 #     players_turn = 'X' if players_turn == 'O' else 'O'
-# 61.	Написать программу вычисления арифметического выражения заданного строкой. Используются операции +,-,/,*. приоритет операций стандартный. Пример: 2+2 => 4; 1+2*3 => 7; 1-2*3 => -6; 
-# a.	Добавить возможность использования скобок, меняющих приоритет операций. Пример: 1+2*3 => 7; (1+2)*3 => 9;
-# 62.	Реализовать RLE алгоритм. реализовать модуль сжатия и восстановления данных.
+# 61.	Написать программу вычисления арифметического выражения заданного строкой. Используются операции +,-,/,*. 
+# приоритет операций стандартный. Пример: 2+2 => 4; 1+2*3 => 7; 1-2*3 => -6; 
 
-def set_archive(data, path):
-    str2= ''
-    i = 0
-    sub_str = data[0]
-    for char in data:    
-        if sub_str == char:
-            i += 1
-            continue
-        str2 += str(i) + sub_str
-        sub_str = char
-        i = 1
-    str2 += str(i) + sub_str    
-    with open(path, 'w') as file:
-        file.write(str2)
-
-def get_archive(path):
-    with open(path, 'r') as file:
-         data = file.read()
-    str2= ''
+def parse_exp(expression: str):
     sub_str = ''
-    for char in data:    
+    ex_list = []
+    for char in expression:
         if char.isdigit():
             sub_str += char
         else:
-            str2 += char*int(sub_str)
+            ex_list.append(int(sub_str))
+            ex_list.append(char)
             sub_str = ''
-    return str2
+    ex_list.append(int(sub_str))
+    for index, item in enumerate(ex_list):
+        if item in ['*', '/']:
+            sub_list = [ex_list[index - 1], item, ex_list[index + 1]]
+            ex_list.pop(index - 1)
+            ex_list.pop(index - 1)
+            ex_list.pop(index - 1)
+            ex_list.insert(index - 1, sub_list)
+    return ex_list
+
+# def calc(ex_list: list):
+#     for oper in ex_list[1: len(ex_list) - 1: 2]:
+
+#     return result
+
+
+expression =  '2+2*2/2'  #input('Введите выражение: ')
+print(parse_exp(expression))
+# print(calc(parse_exp(expression)))
+ 
+# a.	Добавить возможность использования скобок, меняющих приоритет операций. Пример: 1+2*3 => 7; (1+2)*3 => 9;
+
+
+# 62.	Реализовать RLE алгоритм. реализовать модуль сжатия и восстановления данных.
+
+# def set_archive(data, path):
+#     str2= ''
+#     i = 0
+#     sub_str = data[0]
+#     for char in data:    
+#         if sub_str == char:
+#             i += 1
+#             continue
+#         str2 += str(i) + sub_str
+#         sub_str = char
+#         i = 1
+#     str2 += str(i) + sub_str    
+#     with open(path, 'w') as file:
+#         file.write(str2)
+
+# def get_archive(path):
+#     with open(path, 'r') as file:
+#          data = file.read()
+#     str2= ''
+#     sub_str = ''
+#     for char in data:    
+#         if char.isdigit():
+#             sub_str += char
+#         else:
+#             str2 += char*int(sub_str)
+#             sub_str = ''
+#     return str2
     
 
-text = input('Введите текст для архивации: ')
+# text = input('Введите текст для архивации: ')
 
-set_archive(text, 'archive.txt')
-print(get_archive('archive.txt'))
+# set_archive(text, 'archive.txt')
+# print(get_archive('archive.txt'))
 
