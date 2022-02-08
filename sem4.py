@@ -263,25 +263,38 @@ from unittest import result
 # 61.	Написать программу вычисления арифметического выражения заданного строкой. Используются операции +,-,/,*. приоритет операций стандартный. Пример: 2+2 => 4; 1+2*3 => 7; 1-2*3 => -6; 
 # a.	Добавить возможность использования скобок, меняющих приоритет операций. Пример: 1+2*3 => 7; (1+2)*3 => 9;
 # 62.	Реализовать RLE алгоритм. реализовать модуль сжатия и восстановления данных.
-str1 = 'ffgggdeeeeeeer4'
-str2= ''
-i = 0
-sub_str = str1[0]
 
-for char in str1:    
-    if sub_str == char:
-        i += 1
-        continue
-    str2 += str(i) + sub_str
-    sub_str = char
-    i = 1
-str2 += str(i) + sub_str    
+def set_archive(data, path):
+    str2= ''
+    i = 0
+    sub_str = data[0]
+    for char in data:    
+        if sub_str == char:
+            i += 1
+            continue
+        str2 += str(i) + sub_str
+        sub_str = char
+        i = 1
+    str2 += str(i) + sub_str    
+    with open(path, 'w') as file:
+        file.write(str2)
 
-print(str2)
+def get_archive(path):
+    with open(path, 'r') as file:
+         data = file.read()
+    str2= ''
+    sub_str = ''
+    for char in data:    
+        if char.isdigit():
+            sub_str += char
+        else:
+            str2 += char*int(sub_str)
+            sub_str = ''
+    return str2
+    
 
+text = input('Введите текст для архивации: ')
 
+set_archive(text, 'archive.txt')
+print(get_archive('archive.txt'))
 
-# a.	входные и выходные данные хранятся в отдельных файлах
-
-# tup = (254, 5, 45, 656)
-# print(*tup)
