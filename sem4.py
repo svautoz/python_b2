@@ -179,46 +179,46 @@ from unittest import result
 
 # 59.	Помните игру с конфетами из модуля "Математика и Информатика"? Создайте такую игру для игры человек против человека
 # https://cloud.mail.ru/public/kczH/yLqakTmUy
-sweets = 121
-max_sweets = 28
-turn = 1
-def get_hint_user(sweets, max_sweets):
-    if max_sweets >= sweets:
-        return sweets
-    number = sweets // max_sweets
-    y = number * max_sweets + 1
-    return sweets - y
+# sweets = 121
+# max_sweets = 28
+# turn = 1
+# def get_hint_user(sweets, max_sweets):
+#     if max_sweets >= sweets:
+#         return sweets
+#     number = sweets // max_sweets
+#     y = number * max_sweets + 1
+#     return sweets - y
 
-def get_hint_comp(sweets, max_sweets):
-    if max_sweets >= sweets:
-        return sweets
-    number = sweets // max_sweets    
-    y = number * max_sweets + 1
-    if y >= sweets:
-        y = (number - 1) * max_sweets + 1
-    return (random.randint(1, sweets if max_sweets > sweets else max_sweets) 
-    if sweets - y == 0 else sweets - y)
+# def get_hint_comp(sweets, max_sweets):
+#     if max_sweets >= sweets:
+#         return sweets
+#     number = sweets // max_sweets    
+#     y = number * max_sweets + 1
+#     if y >= sweets:
+#         y = (number - 1) * max_sweets + 1
+#     return (random.randint(1, sweets if max_sweets > sweets else max_sweets) 
+#     if sweets - y == 0 else sweets - y)
 
-def get_sweets(turn):
-    while True:
-        if turn == 1:
-            print(f'Заберите {get_hint_user(sweets, max_sweets)} конфет')
-            sweet_count = int(input(f'Сколько конфет забрать игроку {turn}:'))
-        else:
-            sweet_count = get_hint_comp(sweets, max_sweets)
-            print(f'Бот ввел число: {sweet_count}')
-        if sweet_count >= max_sweets:
-            sweet_count = max_sweets
-        return sweet_count    
+# def get_sweets(turn):
+#     while True:
+#         if turn == 1:
+#             print(f'Заберите {get_hint_user(sweets, max_sweets)} конфет')
+#             sweet_count = int(input(f'Сколько конфет забрать игроку {turn}:'))
+#         else:
+#             sweet_count = get_hint_comp(sweets, max_sweets)
+#             print(f'Бот ввел число: {sweet_count}')
+#         if sweet_count >= max_sweets:
+#             sweet_count = max_sweets
+#         return sweet_count    
 
-while True:
-    print(f'Конфет осталось {sweets}')
-    sweets -= get_sweets(turn)
-    if sweets <= 0:
-        turn = 'Бот' if turn == 2 else 'Человек'
-        print(f'Победил игрок {turn}')
-        break    
-    turn = 2 if turn == 1 else 1
+# while True:
+#     print(f'Конфет осталось {sweets}')
+#     sweets -= get_sweets(turn)
+#     if sweets <= 0:
+#         turn = 'Бот' if turn == 2 else 'Человек'
+#         print(f'Победил игрок {turn}')
+#         break    
+#     turn = 2 if turn == 1 else 1
 
 
 # a.	Добавьте игру против бота
@@ -263,8 +263,25 @@ while True:
 # 61.	Написать программу вычисления арифметического выражения заданного строкой. Используются операции +,-,/,*. приоритет операций стандартный. Пример: 2+2 => 4; 1+2*3 => 7; 1-2*3 => -6; 
 # a.	Добавить возможность использования скобок, меняющих приоритет операций. Пример: 1+2*3 => 7; (1+2)*3 => 9;
 # 62.	Реализовать RLE алгоритм. реализовать модуль сжатия и восстановления данных.
+str1 = 'ffgggdeeeeeeer4'
+str2= ''
+i = 0
+sub_str = str1[0]
+
+for char in str1:    
+    if sub_str == char:
+        i += 1
+        continue
+    str2 += str(i) + sub_str
+    sub_str = char
+    i = 1
+str2 += str(i) + sub_str    
+
+print(str2)
+
+
+
 # a.	входные и выходные данные хранятся в отдельных файлах
 
 # tup = (254, 5, 45, 656)
 # print(*tup)
-
