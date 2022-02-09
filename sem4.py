@@ -274,27 +274,139 @@ def parse_exp(expression: str):
             ex_list.append(char)
             sub_str = ''
     ex_list.append(int(sub_str))
-    for index, item in enumerate(ex_list):
-        if item in ['*', '/']:
-            sub_list = [ex_list[index - 1], item, ex_list[index + 1]]
-            ex_list.pop(index - 1)
-            ex_list.pop(index - 1)
-            ex_list.pop(index - 1)
-            ex_list.insert(index - 1, sub_list)
+    index = 0
+    while index < len(ex_list):
+        if ex_list[index] in ['*', '/']:
+            ex_list = mod_list(ex_list, index)
+            index = 0
+        index += 1   
+    index = 0
+    while index < len(ex_list):
+        if ex_list[index] in ['+', '-']:
+            ex_list = mod_list(ex_list, index)
+            index = 0
+        index += 1  
     return ex_list
+
+def mod_list(ex_list, index):
+    sub_list = [ex_list[index - 1], ex_list[index], ex_list[index + 1]]
+    ex_list.pop(index - 1)
+    ex_list.pop(index - 1)
+    ex_list.pop(index - 1)
+    ex_list.insert(index - 1, sub_list)
+    return ex_list
+
+def calc(ex_list: list):
+    if isinstance(ex_list[0], list):
+        a = calc(ex_list[0])
+    else:
+        a = ex_list[0]
+    if isinstance(ex_list[2], list):
+        b = calc(ex_list[2])
+    else:
+        b = ex_list[2]
+
+    if ex_list[1] == '+':    
+        return a + b  
+    elif ex_list[1] == '-':    
+        return a - b  
+    elif ex_list[1] == '*':    
+        return a * b 
+    elif ex_list[1] == '/':    
+        return a / b
+    return result
 
 # def calc(ex_list: list):
 #     for oper in ex_list[1: len(ex_list) - 1: 2]:
 
 #     return result
+# [2, +, 2, *, 2, /, 2]
+# [2, +, [[2*2], /, 2]]
 
 
-expression =  '2+2*2/2'  #input('Введите выражение: ')
-print(parse_exp(expression))
+expression =  '22*3+3*2-4+2*2-100/2'  #input('Введите выражение: ')
+parsed_list = parse_exp(expression)
+print(parsed_list[0])
+print(calc(parsed_list[0]))
 # print(calc(parse_exp(expression)))
  
 # a.	Добавить возможность использования скобок, меняющих приоритет операций. Пример: 1+2*3 => 7; (1+2)*3 => 9;
 
+# def parse_exp(expression: str):
+#     sub_str = ''
+#     ex_list = []
+#     for char in expression:
+#         if char in ['(']:
+#             ex_list.append(char)
+#             continue
+#         if char.isdigit():
+#             sub_str += char
+#         else:
+#             ex_list.append(int(sub_str))
+#             ex_list.append(char)
+#             sub_str = ''
+        
+#     ex_list.append(int(sub_str))
+#     index = 0
+#     while index < len(ex_list):
+#         if ex_list[index] in ['(', ')']:
+#             ex_list = mod_list(ex_list, index)
+#             index = 0
+#         index += 1   
+#     index = 0
+#     while index < len(ex_list):
+#         if ex_list[index] in ['*', '/']:
+#             ex_list = mod_list(ex_list, index)
+#             index = 0
+#         index += 1   
+#     index = 0
+#     while index < len(ex_list):
+#         if ex_list[index] in ['+', '-']:
+#             ex_list = mod_list(ex_list, index)
+#             index = 0
+#         index += 1  
+#     return ex_list
+
+# def mod_list(ex_list, index):
+#     sub_list = [ex_list[index - 1], ex_list[index], ex_list[index + 1]]
+#     ex_list.pop(index - 1)
+#     ex_list.pop(index - 1)
+#     ex_list.pop(index - 1)
+#     ex_list.insert(index - 1, sub_list)
+#     return ex_list
+
+# def calc(ex_list: list):
+#     if isinstance(ex_list[0], list):
+#         a = calc(ex_list[0])
+#     else:
+#         a = ex_list[0]
+#     if isinstance(ex_list[2], list):
+#         b = calc(ex_list[2])
+#     else:
+#         b = ex_list[2]
+
+#     if ex_list[1] == '+':    
+#         return a + b  
+#     elif ex_list[1] == '-':    
+#         return a - b  
+#     elif ex_list[1] == '*':    
+#         return a * b 
+#     elif ex_list[1] == '/':    
+#         return a / b
+#     return result
+
+# # def calc(ex_list: list):
+# #     for oper in ex_list[1: len(ex_list) - 1: 2]:
+
+# #     return result
+# # [2, +, 2, *, 2, /, 2]
+# # [2, +, [[2*2], /, 2]]
+
+
+# expression = '(2+2)*2' #'20+3*2-4+2*2-100/2'  #input('Введите выражение: ')
+# parsed_list = parse_exp(expression)
+# print(parsed_list[0])
+# print(calc(parsed_list[0]))
 
 # 62.	Реализовать RLE алгоритм. реализовать модуль сжатия и восстановления данных.
 
