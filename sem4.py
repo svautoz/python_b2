@@ -324,7 +324,7 @@ def calc(ex_list: list):
 # [2, +, [[2*2], /, 2]]
 
 
-expression =  '22*3+3*2-4+2*2-100/2'  #input('Введите выражение: ')
+expression =  '22*3+3*2-4+2*2-10/2'  #input('Введите выражение: ')
 parsed_list = parse_exp(expression)
 print(parsed_list[0])
 print(calc(parsed_list[0]))
